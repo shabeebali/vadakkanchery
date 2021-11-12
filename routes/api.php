@@ -30,6 +30,12 @@ Route::post('add', function (Request $request) {
         $d = explode("-", $request->dod);
         $dod = $d[2] . '-' . $d[1] . '-' . $d[0];
     }
+    $phones = [];
+    foreach ($request->phones as $phone) {
+        if ($phone) {
+            $phones[] = $phone;
+        }
+    }
     $model = new \App\Models\Member;
     $model->name = $request->name;
     $model->dob = $dob;
@@ -37,7 +43,7 @@ Route::post('add', function (Request $request) {
     $model->blood_group = $request->blood_group;
     $model->address = $request->address;
     $model->employed = $request->employed;
-    $model->phones = $request->phones;
+    $model->phones = $phones;
     $model->max_qualification = $request->max_qualification;
     $model->married = $request->married;
     $model->parent_id = $request->parent['value'];
@@ -61,6 +67,12 @@ Route::post('add', function (Request $request) {
             $d = explode("-", $request->spouse['dod']);
             $dod = $d[2] . '-' . $d[1] . '-' . $d[0];
         }
+        $phones = [];
+        foreach ($request->phones as $phone) {
+            if ($phone) {
+                $phones[] = $phone;
+            }
+        }
         $spouseModel = new \App\Models\Member();
         $spouseModel->name = $request->spouse['name'];
         $spouseModel->dob = $dob;
@@ -68,7 +80,7 @@ Route::post('add', function (Request $request) {
         $spouseModel->blood_group = $request->spouse['blood_group'];
         $spouseModel->address = $request->spouse['address'];
         $spouseModel->employed = $request->spouse['employed'];
-        $spouseModel->phones = $request->spouse['phones'];
+        $spouseModel->phones = $phones;
         $spouseModel->max_qualification = $request->spouse['max_qualification'];
         $spouseModel->married = $request->spouse['married'];
         $spouseModel->spouse_id = $model->id;
