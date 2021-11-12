@@ -123,9 +123,9 @@ Route::get('members', function () {
         } elseif ($member->in_law) {
             $relation = $member->spouseof->name;
             if ($member->male) {
-                $relation .= ' (Husband)';
-            } else {
                 $relation .= ' (Wife)';
+            } else {
+                $relation .= ' (Husband)';
             }
         }
         $temp = [
