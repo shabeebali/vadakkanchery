@@ -18,4 +18,9 @@ class Member extends Model
     {
         return $this->hasOne(Member::class, 'spouse_id');
     }
+
+    public function children()
+    {
+        return $this->hasMany(Member::class, 'parent_id');
+    }
 }

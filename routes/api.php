@@ -62,3 +62,15 @@ Route::post('add', function (Request $request) {
 
     return response()->json(['message' => 'success']);
 });
+
+Route::get('parents', function () {
+    $model = \App\Models\Member::with('spouse')->where('married', 1)->get();
+    $data = [];
+    foreach ($model as $member) {
+        $temp = [
+            'label' => $member->spouse ? $member->name . ' - ' . $member->spouse->name : $member->name,
+            'value' => $member->id
+        ];
+        $data[] = $temp;
+    }
+});
