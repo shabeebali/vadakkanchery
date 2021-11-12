@@ -114,13 +114,24 @@ Route::get('parents', function () {
 });
 
 Route::get('members', function () {
-    $members = \App\Models\Member::with(['parent', 'parent.spouse'])->get();
+    $members = \App\Models\Member::with(['parent', 'parent.spouse', 'spouseof'])->get();
     $data = [];
     foreach ($members as $member) {
+        $relation = '';
+        if ($member->parent) {
+            $relation = $member->parent->name . ' - ' . $member->parent->spouse->name . ' (Parents)';
+        } elseif ($member->in_law) {
+            $relation = $member->spouseof->name;
+            if ($member->male) {
+                $relation .= ' (Husband)';
+            } else {
+                $relation .= ' (Wife)';
+            }
+        }
         $temp = [
             'id' => $member->id,
             'name' => $member->name,
-            'parent' => $member->parent ? $member->parent->name . ' - ' . $member->parent->spouse->name : ''
+            'relation' => $relation
         ];
         $data[] = $temp;
     }
