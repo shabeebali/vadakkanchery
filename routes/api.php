@@ -19,17 +19,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('add', function (Request $request) {
+    $dob = NULL;
+    $dod = NULL;
+    if ($request->dob) {
+        $d = explode("-", $request->dob);
+        $dob = $d[2] . '-' . $d[1] . '-' . $d[0];
+    }
+    if ($request->dod) {
+        $d = explode("-", $request->dod);
+        $dod = $d[2] . '-' . $d[1] . '-' . $d[0];
+    }
     $model = new \App\Models\Member;
     $model->name = $request->name;
-    $model->dob = $request->dob;
-    $model->dod = $request->dod;
+    $model->dob = $dob;
+    $model->dod = $dod;
     $model->blood_group = $request->blood_group;
     $model->address = $request->address;
     $model->employed = $request->employed;
     $model->phones = $request->phones;
     $model->max_qualification = $request->max_qualification;
     $model->married = $request->married;
-    $model->parent_id = $request->parent_id;
+    $model->parent_id = $request->parent['value'];
     $model->in_law = false;
     $model->male = $request->male;
     $model->aadhar = $request->aadhar;
@@ -39,10 +49,20 @@ Route::post('add', function (Request $request) {
     $model->save();
 
     if ($request->married) {
+        $dob = NULL;
+        $dod = NULL;
+        if ($request->spouse['dob']) {
+            $d = explode("-", $request->spouse['dob']);
+            $dob = $d[2] . '-' . $d[1] . '-' . $d[0];
+        }
+        if ($request->spouse['dod']) {
+            $d = explode("-", $request->spouse['dod']);
+            $dod = $d[2] . '-' . $d[1] . '-' . $d[0];
+        }
         $spouseModel = new \App\Models\Member();
         $spouseModel->name = $request->spouse['name'];
-        $spouseModel->dob = $request->spouse['dob'];
-        $spouseModel->dod = $request->spouse['dod'];
+        $spouseModel->dob = $dob;
+        $spouseModel->dod = $dod;
         $spouseModel->blood_group = $request->spouse['blood_group'];
         $spouseModel->address = $request->spouse['address'];
         $spouseModel->employed = $request->spouse['employed'];
@@ -51,7 +71,7 @@ Route::post('add', function (Request $request) {
         $spouseModel->married = $request->spouse['married'];
         $spouseModel->spouse_id = $model->id;
         $spouseModel->in_law = true;
-        $spouseModel->male = $request->spouse['male'];
+        $spouseModel->male = !$request->male;
         $spouseModel->aadhar = $request->spouse['aadhar'];
         $spouseModel->email = $request->spouse['email'];
         $spouseModel->alive = $request->spouse['alive'];
