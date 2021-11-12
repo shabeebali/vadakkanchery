@@ -73,4 +73,6 @@ Route::get('parents', function () {
         ];
         $data[] = $temp;
     }
+
+    return $data;
 });
