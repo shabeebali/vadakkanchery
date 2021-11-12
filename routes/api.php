@@ -64,7 +64,7 @@ Route::post('add', function (Request $request) {
 });
 
 Route::get('parents', function () {
-    $model = \App\Models\Member::with('spouse')->where('married', 1)->get();
+    $model = \App\Models\Member::with('spouse')->where('married', 1)->where('in_law', 0)->get();
     $data = [];
     foreach ($model as $member) {
         $temp = [
