@@ -23,7 +23,7 @@ class CreateMembersTable extends Migration
             $table->text('temporary_address')->nullable();
             $table->boolean('employed');
             $table->json('phones')->nullable();
-            $table->string('max_qualification');
+            $table->string('max_qualification')->nullable();
             $table->boolean('married');
             $table->integer('parent_id')->nullable();
             $table->integer('spouse_id')->nullable();
@@ -35,6 +35,7 @@ class CreateMembersTable extends Migration
             $table->string('fathers_name')->nullable();
             $table->string('mothers_name')->nullable();
             $table->string('occupation')->nullable();
+            $table->integer('level');
             $table->timestamps();
         });
     }

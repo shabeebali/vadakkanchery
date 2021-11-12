@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('add', function (Request $request) {
+    $parent = \App\Models\Member::find($request->parent['value']);
     $dob = NULL;
     $dod = NULL;
     if ($request->dob) {
@@ -46,6 +47,7 @@ Route::post('add', function (Request $request) {
     $model->email = $request->email;
     $model->alive = $request->alive;
     $model->occupation = $request->occupation;
+    $model->level = $parent->level + 1;
     $model->save();
 
     if ($request->married) {
@@ -78,6 +80,8 @@ Route::post('add', function (Request $request) {
         $spouseModel->fathers_name = $request->spouse['fathers_name'];
         $spouseModel->mothers_name = $request->spouse['mothers_name'];
         $spouseModel->occupation = $request->spouse['occupation'];
+        $spouseModel->level = $model->level;
+        $spouseModel->save();
     }
 
     return response()->json(['message' => 'success']);
