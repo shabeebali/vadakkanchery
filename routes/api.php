@@ -100,7 +100,7 @@ Route::post('add', function (Request $request) {
 });
 
 Route::get('parents', function () {
-    $model = \App\Models\Member::with('spouse')->where('married', 1)->where('in_law', 0)->get();
+    $model = \App\Models\Member::with('spouse')->where('married', 1)->where('in_law', 0)->orderBy('name')->get();
     $data = [];
     foreach ($model as $member) {
         $temp = [
@@ -110,5 +110,19 @@ Route::get('parents', function () {
         $data[] = $temp;
     }
 
+    return $data;
+});
+
+Route::get('members', function () {
+    $members = \App\Models\Member::with(['parent', 'parent.spouse'])->get();
+    $data = [];
+    foreach ($members as $member) {
+        $temp = [
+            'id' => $member->id,
+            'name' => $member->name,
+            'parent' => $member->parent ? $member->parent->name . ' - ' . $member->parent->spouse->name : ''
+        ];
+        $data[] = $temp;
+    }
     return $data;
 });
