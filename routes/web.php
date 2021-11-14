@@ -1,5 +1,6 @@
 <?php
 
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('download', function () {
+    $data = \App\Models\Member::where('level', 1)->get();
+    $pdf = PDF::loadView('download', ['data' => $data]);
+    return $pdf->download('members.pdf');
 });
