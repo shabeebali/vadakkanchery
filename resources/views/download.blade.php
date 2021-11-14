@@ -26,7 +26,7 @@ td {
     <table class="table fw">
         <tbody class="table">
             <tr>
-                <td colspan="2" class="center py"><h2>Vadiyil Vadakkanchery Kudumba Samithi</h2></td>
+                <td colspan="2" class="center py"><h2>Vadiyil Vadakkanchery Kudumba Samithi, 2021</h2></td>
             </tr>
             <tr>
                 <td>
