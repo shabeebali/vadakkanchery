@@ -15,6 +15,9 @@ table, th, td {
 .py {
     padding: 15px 0px;
 }
+.p {
+    padding: 10px;
+}
 </style>
 @foreach ($data as $member)
     <table class="table fw">
@@ -23,23 +26,23 @@ table, th, td {
                 <td colspan="2" class="center py">വാടിയിൽ വടക്കാഞ്ചേരി കുടുംബ സമിതി</td>
             </tr>
             <tr>
-                <td>
+                <td class="p">
                     Member Details
                     <br/>
-                    {{ \Illuminate\Support\Str::headline($member->name) }}
+                    Name: {{ \Illuminate\Support\Str::headline($member->name) }}
                     <br/>
-                    {{ \Illuminate\Support\Str::headline($member->address) }}
+                    Address: {{ \Illuminate\Support\Str::headline($member->address) }}
                     <br/>
-                    {{ \Illuminate\Support\Str::headline($member->dob) }}
+                    DOB: {{ \Illuminate\Support\Str::headline($member->dob) }}
                 </td>
-                <td>
+                <td class="p">
                     Spouse Details
                     <br/>
-                    {{ \Illuminate\Support\Str::headline($member->spouse->name) }}
+                    Name: {{ \Illuminate\Support\Str::headline($member->spouse->name) }}
                     <br/>
-                    {{ \Illuminate\Support\Str::headline($member->spouse->address) }}
+                    Address: {{ \Illuminate\Support\Str::headline($member->spouse->address) }}
                     <br/>
-                    {{ \Illuminate\Support\Str::headline($member->spouse->dob) }}
+                    DOB: {{ \Illuminate\Support\Str::headline($member->spouse->dob) }}
                 </td>
             </tr>
         </tbody
