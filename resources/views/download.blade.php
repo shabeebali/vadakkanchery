@@ -62,21 +62,23 @@ td {
                     <td>{{ \Illuminate\Support\Str::headline($child->name)}}</td>
                     <td>{{$child->dob}}</td>
                     <td>{{$child->blood_group}}</td>
-                <tr>
+                </tr>
                 @if ($child->married)
                     <tr>
                         <td>{{ \Illuminate\Support\Str::headline($child->spouse->name)}}</td>
                         <td>{{$child->spouse->dob}}</td>
                         <td>{{$child->spouse->blood_group}}</td>
-                    <tr>
+                    </tr>
                     @foreach ($child->children as $grandChild)
                         <tr>
                             <td>{{ \Illuminate\Support\Str::headline($grandChild->name)}}</td>
                             <td>{{$grandChild->dob}}</td>
                             <td>{{$grandChild->blood_group}}</td>
-                        <tr>
+                        </tr>
                     @endforeach
                 @endif
             @endforeach
+        </tbody>
+    </table>
     <div class="page-break"></div>
 @endforeach
