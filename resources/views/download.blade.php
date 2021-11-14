@@ -26,7 +26,7 @@ td {
     <table class="table fw">
         <tbody class="table">
             <tr>
-                <td colspan="2" class="center py">വാടിയിൽ വടക്കാഞ്ചേരി കുടുംബ സമിതി</td>
+                <td colspan="2" class="center py"><h4>Vadiyil Vadakkanchery Kudumba Samithi</h4></td>
             </tr>
             <tr>
                 <td>
@@ -50,7 +50,7 @@ td {
             </tr>
         </tbody>
     </table>
-    <table class="table">
+    <table class="table fw">
         <tbody class="table">
             <tr>
                 <td>Name</td>
