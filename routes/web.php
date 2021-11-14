@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('download', function () {
-    $data = \App\Models\Member::where('level', 1)->get();
+    $data = \App\Models\Member::where('level', 1)->where('in_law', 0)->get();
     $pdf = PDF::loadView('download', ['data' => $data]);
     return $pdf->download('members.pdf');
 });
