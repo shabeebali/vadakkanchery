@@ -30,27 +30,27 @@ td {
             </tr>
             <tr>
                 <td>
-                    <h4>Member Details</h4>
+                    <p style="font-weight:bold;">Member Details</p>
                     <br/>
                     Name: {{ \Illuminate\Support\Str::headline($member->name) }}
                     <br/>
                     Address: {{ \Illuminate\Support\Str::headline($member->address) }}
                     <br/>
                     DOB: {{ $member->dob }}
-                    <br>
+                    <br/>
                     Fathers' Name: {{\Illuminate\Support\Str::headline($member->parent->name)}}
                     <br/>
                     Mother's Name: {{\Illuminate\Support\Str::headline($member->parent->spouse->name)}}
                 </td>
                 <td>
-                    <h4>Spouse Details</h4>
+                    <p style="font-weight:bold;">Spouse Details</p>
                     <br/>
                     Name: {{ \Illuminate\Support\Str::headline($member->spouse->name) }}
                     <br/>
                     Address: {{ \Illuminate\Support\Str::headline($member->spouse->address) }}
                     <br/>
                     DOB: {{ $member->spouse->dob }}
-                    </br>
+                    <br/>
                     Fathers' Name: {{\Illuminate\Support\Str::headline($member->spouse->fathers_name)}}
                     <br/>
                     Mother's Name: {{\Illuminate\Support\Str::headline($member->spouse->mothers_name)}}
