@@ -26,11 +26,11 @@ td {
     <table class="table fw">
         <tbody class="table">
             <tr>
-                <td colspan="2" class="center py"><h4>Vadiyil Vadakkanchery Kudumba Samithi</h4></td>
+                <td colspan="2" class="center py"><h2>Vadiyil Vadakkanchery Kudumba Samithi</h2></td>
             </tr>
             <tr>
                 <td>
-                    <h6>Member Details</h6>
+                    <h4>Member Details</h4>
                     <br/>
                     Name: {{ \Illuminate\Support\Str::headline($member->name) }}
                     <br/>
@@ -43,7 +43,7 @@ td {
                     Mother's Name: {{\Illuminate\Support\Str::headline($member->parent->spouse->name)}}
                 </td>
                 <td>
-                    Spouse Details
+                    <h4>Spouse Details</h4>
                     <br/>
                     Name: {{ \Illuminate\Support\Str::headline($member->spouse->name) }}
                     <br/>
