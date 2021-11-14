@@ -70,14 +70,14 @@ td {
                         <td>{{ \Illuminate\Support\Str::headline($child->spouse->name)}}</td>
                         <td>{{$child->spouse->dob}}</td>
                         <td>{{$child->spouse->blood_group}}</td>
-                        <td>{{$child->male ? 'Son in Law' : 'Daughter in Law'}}</td>
+                        <td>{{$child->spouse->male ? 'Son in Law' : 'Daughter in Law'}}</td>
                     </tr>
                     @foreach ($child->children as $grandChild)
                         <tr>
                             <td>{{ \Illuminate\Support\Str::headline($grandChild->name)}}</td>
                             <td>{{$grandChild->dob}}</td>
                             <td>{{$grandChild->blood_group}}</td>
-                            <td>{{$child->male ? 'Grand Son' : 'Grand Daughter'}}</td>
+                            <td>{{$grandChild->male ? 'Grand Son' : 'Grand Daughter'}}</td>
                         </tr>
                     @endforeach
                 @endif
