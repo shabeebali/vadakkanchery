@@ -30,13 +30,17 @@ td {
             </tr>
             <tr>
                 <td>
-                    Member Details
+                    <h6>Member Details</h6>
                     <br/>
                     Name: {{ \Illuminate\Support\Str::headline($member->name) }}
                     <br/>
                     Address: {{ \Illuminate\Support\Str::headline($member->address) }}
                     <br/>
                     DOB: {{ $member->dob }}
+                    <br>
+                    Fathers' Name: {{\Illuminate\Support\Str::headline($member->parent->name)}}
+                    <br/>
+                    Mother's Name: {{\Illuminate\Support\Str::headline($member->parent->spouse->name)}}
                 </td>
                 <td>
                     Spouse Details
@@ -46,6 +50,10 @@ td {
                     Address: {{ \Illuminate\Support\Str::headline($member->spouse->address) }}
                     <br/>
                     DOB: {{ $member->spouse->dob }}
+                    </br>
+                    Fathers' Name: {{\Illuminate\Support\Str::headline($member->spouse->fathers_name)}}
+                    <br/>
+                    Mother's Name: {{\Illuminate\Support\Str::headline($member->spouse->mothers_name)}}
                 </td>
             </tr>
         </tbody>
